@@ -1,3 +1,4 @@
+
 // Including express module and intitalizing it as a function in 'app' variable //
 
 var express = require('express');
@@ -9,10 +10,10 @@ var mongoose = require('mongoose'); // For database schemas //
 var bodyParser = require('body-parser'); // For passing and accepting data from the body of the webpage //
 var cookieParser = require('cookie-parser'); // For maintaining user data when user logs in or logout // 
 var session = require('express-session');  // Giving/checking authorization to allow only identified users to make changes //
-var flash = require('connect-flash');
+
 var logger = require('morgan'); // This is used to log all the request which are made on your API //
 var path = require('path'); // Path is used to link directories inside the application //
-//var flash = require('express-flash-notification');
+
 // Intitalizing the middlewares using '.use' //
 app.use(logger('dev'));
 
@@ -26,6 +27,7 @@ app.use(session({
      saveUninitialized : true,
      cookie : {secure : false} // Make true in case of SSL .
 }));
+
 app.use(flash());
 app.set('view engine','ejs'); // Intitializing jade templating engine //
 app.set('views',path.join(__dirname + '/app/views')); // Including the views directory dynamically //
@@ -52,7 +54,7 @@ fs.readdirSync('./app/models').forEach(function(file){
      }
 });
 
-// For controllers directory //
+// For include all the controllers in app //
 fs.readdirSync('./app/controllers').forEach(function(file){
      if(file.indexOf('.js')){
         var route = require('./app/controllers/'+file);
@@ -61,9 +63,7 @@ fs.readdirSync('./app/controllers').forEach(function(file){
 });
 
 // This is a custom middleware //
-// We create custom middlwares to ease our tasks beacuse , //
-// We declare functions that need to be used at many places throughout our application //
-// Below middleware has been created to serve the purpose of checking whether the user requesting for data is legit user or not //
+// to check whether user is legit or not
 var auth = require('./middlewares/auth');
 
 // Calling User model from the user schema //
@@ -72,27 +72,23 @@ var userModel = mongoose.model('User');
 // Using/Initializing our custom middleware //
 app.use(function(req,res,next){
      // If user is logged in or user's session is existing //
-     if(req.session && req.session.user)
-     {
+     if(req.session && req.session.user){
       // Check if email id of user matches with the email id of the current user requesting to log in //
        userModel.findOne({'email':req.session.user.email},function(err,user){
            // If success //
-           if(user)
-           {
+           if(user) {
              // remove the user's password from the session cookie for security purposes //
              req.user = user;
              delete req.user.password;
              req.session.user = user;
              next();
            }
-           else
-           {
+           else {
              // Do nothing //
            }
        });
      }
-     else
-     {
+     else{
         // Execute the next function or command //
         next();
      }
@@ -123,15 +119,13 @@ app.get('*',function(req,res,next){
 app.use(function(err,req,res,next){
 
    // Show message in the terminal (For developer's reference) //
-   console.log('Our custom error handler was used !');
+   console.log('Custom error handler is used !');
    // If the error status passed is 404 ie: url not found //
-   if(res.status==404)
-   {
+   if(res.status==404){
     // Send response to the user //
-    res.send('Oops ! I think you have landed on an wrong section section of the website. Please redirect to homepage.');
+    res.send('Ops ! You have landed on an wrong section of the Website.');
    }
-   else
-   {
+   else{
     // Send error as response to the user //
     res.send(err);
    }
@@ -139,10 +133,9 @@ app.use(function(err,req,res,next){
 
 // App will listen on this port number //
 // For example if local host : http://localhost:2000 //
-// if, domain : https://xyz.com:2000  //
 app.listen(2000,function(){
 
     // For developers reference to check if the app is active or not //
-    console.log('Our app is now active on port 2000 ! Booyah !!');
+    console.log('Ecommerce-Api app listening on port 2000 !!!');
 
 });

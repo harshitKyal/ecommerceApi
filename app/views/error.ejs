@@ -9,7 +9,7 @@
       padding:0 !important;
     }
 
-    .login-box
+    .error-box
     {
       padding: 5% !important;
       margin-left:20% !important;
@@ -44,26 +44,27 @@
       text-align : center;
     }
 
-    .signupButton
+    
+    .link
     {
       text-decoration: none;
+      float: center;
     }
 
 
 
   </style>
 </head>
-<body class="login-screen">
+<body>
   <main>
-  <div class="login-box">
+  <div class="error-box">
     <br>
     <p><b> Oops ! Some error occured. </b></p>
     <br> <hr>
-    <p> Browser Says : <code> <%= message %>  </code></p>
-    <p> STATUS : <code> <%= status %>   </code></p>
-    
-    <p><a class="signupButton" href ="http://localhost:2000/v1/users/login/screen" ><b>Log in</b></a></p><br>
-    <p><a class="signupButton" href ="http://localhost:2000/v1/users/signup/screen" ><b>Signup</b></a></p><br>
+    <p> Error Says : <code> <%= message %>  </code></p>
+    <p> Status : <code> <%= status %>   </code></p>
+    <p><a class="link" href ="http://localhost:2000/v1/users/login/screen" ><b>Login</b></a></p>
+    <p><a class="link" href ="http://localhost:2000/v1/users/signup/screen" ><b>Sign up</b></a></p>
   </div>
   </main>
   <% include ./footer.ejs %>

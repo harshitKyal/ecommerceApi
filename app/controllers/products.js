@@ -100,7 +100,6 @@ module.exports.controllerFunction = function(app){
    // 'GET' http request for getting data //
    productsRouter.get('/all',function(req,res){
        // Find inside the products model //
-       // The condition for finding is written inside: | find({--here--},func... |  //
        productsModel.find({},function(error,allProducts){
           // If error occured //
           if(error)
@@ -116,15 +115,12 @@ module.exports.controllerFunction = function(app){
             res.send(successResponce);
           }
        });
-   });
-
-   
+   });   
 
    // Find particular product API //
    // 'GET' http request for getting data //
    productsRouter.get('/:productId',function(req,res){
      // Find a particular one inside the products model //
-     // The condition for finding is written inside: | find({--here--},func... |  //
      productsModel.findOne({'productId':req.params.productId},function(error,foundProduct){
         if(foundProduct)
         {
@@ -148,7 +144,6 @@ module.exports.controllerFunction = function(app){
       // Stroring all the variable passed from the jade template body in a single variable //
       var update = req.body;
       // Find a particular one inside the products model and then update it //
-      // The condition for finding is written inside: | find({--here--},func... |  //
       productsModel.findOneAndUpdate({productId:req.params.id},update,function(err,success){
           // If success //
           if(success)
@@ -171,7 +166,6 @@ module.exports.controllerFunction = function(app){
    // 'POST' http request for deleting the data //
    productsRouter.post('/delete',function(req,res){
       // Find a particular one inside the products model and then delete it //
-      // The condition for finding is written inside: | find({--here--},func... |  //
       productsModel.findOneAndRemove({productId:req.body.id},function(err,success){
           // If success //
           if(success)

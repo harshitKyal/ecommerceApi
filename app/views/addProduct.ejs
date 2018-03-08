@@ -9,7 +9,7 @@
       padding:0 !important;
     }
 
-    .login-box
+    .box
     {
       padding: 5% !important;
       margin-left:20% !important;
@@ -53,12 +53,12 @@
 
   </style>
 </head>
-<body class="login-screen">
+<body>
   <main>
-  <div class="login-box">
+  <div class="box">
     <br>
-    <p><b>CREATE or ADD A PRODUCT</b></p>
-    <br> <hr>
+    <p><b>Create a Product</b></p>
+    <hr>
     <form class="login-form" action="http://localhost:2000/v1/products/create" method="post">
       <div class="input-block">
         <input class="input-box" autocomplete="off" type="text" name="productName" placeholder="Product Name" autofocus required/>
@@ -83,12 +83,11 @@
       </div>
       <div class="input-block">
         <input class="input-box" autocomplete="off" type="text" name="productCategory" placeholder="Mention Categories seperated by commas " autofocus required/>
-      </div> <br> <br>
+      </div> <br>
       <button type="submit" name="submit">Create</button><br>
       
     </form>
-    <p><a class="signupButton" href ="http://localhost:2000/v1/users/login/screen" ><b>Log in</b></a></p><br>
-    <p><a class="signupButton" href ="http://localhost:2000/v1/users/signup/screen" ><b>Signup</b></a></p><br>
+   
   </div>
   </main>
   <% include ./footer.ejs %>

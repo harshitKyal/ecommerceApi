@@ -1,5 +1,67 @@
-API Documentation:
 
-Users URL:
+Urls of my api - 
 
-1) 
+Users Urls:
+
+base url - http://localhost:2000/v1/users/
+
+Resources - 
+
+1) GET /all 					- this is used to get all users information - array of objects
+
+2) GET /login/screen 			- this will redirect to login screen where user can login 
+				
+3) POST /login					- use to login into the app
+
+4) GET /signup/screen			- this will redirect to signuo screen where user can register
+				
+5) POST /signup					- use to register for the app
+
+6) POST /delete/:userId			- delete user of that particular userId,
+						
+7) GET /dashboard				- this will redirect to home view , after successful login
+
+8) GET /logout					- logout API , redirect to login screen
+
+9) GET /changePassword/screen	- redirects to changePassword view , where password can be change
+
+10) POST /changePassword		- used to change password of the user
+
+11) GET /cartInfo 				- gives user's cart information
+
+12) GET /:userId				- gives information of user having user id passed in URL
+
+13) GET /forgot/screen			- redirects to forgot view where password can be recover
+
+14) POST /forgot				- use to recover user's password
+
+15) GET /addToCart				- redirects to addToCart view , where you can add product into the cart
+
+16) POST /cart/add 				- use to add product into the cart
+
+17) GET /removeFromCart			- redirects to removeFromCart view,where you can remove product from the cart
+
+18) POST /cart/remove 			- use to remove product from the cart
+
+
+product Urls:
+
+base url - http://localhost:2000/v1/products/
+
+Resources - 
+
+1) GET /all 					- this is used to get all products information - array of objects
+
+2) GET /create/screen 			- redirect to addProduct view 
+						
+3) GET /delete/screen			- redirect to delete screen , to remove a product from the list
+							
+4) GET /:productId				- to get information of product having product Id passed in URL
+						
+5) PUT /edit/:id				- use to edit a product
+
+6) GET /seller/:sellerId		- to get information of the seller
+
+7) POST /create					- use to create a product
+
+8) POST /delete					- use to delete a product from the list
