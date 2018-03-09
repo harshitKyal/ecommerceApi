@@ -128,7 +128,7 @@ module.exports.controllerFunction = function(app) {
             from: 'testingnode7@gmail.com',
             to: data.description.email,
             subject: 'Welcome User',
-            html: '<h2> Thank you ! . You have been added to our mailing list and will now be among the first to hear abour new arrivals , big events and special offers .</h2></br> <h4> Your Email ID is : </h4>' + data.description.email + ' </br> <h4> Your Password is : </h4>' + data.description.password
+            html: '<h2> Thank you ! . You have been added to our mailing list and will now be among the first to hear about new arrivals , big events and special offers .</h2></br> <h4> Your Email ID is : </h4>' + data.description.email + ' </br> <h4> Your Password is : </h4>' + data.description.password
         };
 
         // Sending the mail body using 'nodemailer' transporter //
