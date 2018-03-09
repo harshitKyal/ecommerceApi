@@ -37,7 +37,7 @@ app.set('view engine', 'ejs'); // Intitializing jade templating engine //
 app.set('views', path.join(__dirname + '/app/views')); // Including the views directory dynamically //
 
 // Database path //
-var dbPath = "mongodb://localhost/eCommerceDatabase";
+var dbPath = "mongodb://localhost/eCommerce";
 // Making connetion with the database //
 var db = mongoose.connect(dbPath);
 
