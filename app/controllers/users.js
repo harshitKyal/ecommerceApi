@@ -238,8 +238,8 @@ module.exports.controllerFunction = function(app) {
     // User Login API //
     // 'POST' http method for logging in user //
     userRouter.post('/login', function(req, res) {
+       
         // Find particular inside the users model //
-        // The condition for finding is written inside: | find({--here--},func... |  //
         userModel.findOne({
             $and: [{
                 'email': req.body.email
@@ -279,9 +279,7 @@ module.exports.controllerFunction = function(app) {
     // 'GET' http request for getting data //
     userRouter.get('/changePassword/screen', auth.checkLogin, function(req, res) {
 
-        res.render('changePassword', {
-            errror: false
-        });
+        res.render('changePassword');
     });
 
 
@@ -341,7 +339,6 @@ module.exports.controllerFunction = function(app) {
                     transporter.sendMail(mailOptions, function(error, info) {
                         // If error //
                         if (error)
-                            // Show error (For developers reference) //
                             console.log(error);
                     });
 
@@ -358,12 +355,11 @@ module.exports.controllerFunction = function(app) {
     // to get cart info of user //
     // 'GET' http request for getting data //
     userRouter.get('/cartInfo', auth.checkLogin, function(req, res) {
-        // Find inside the user model //
-        // The condition for finding is written inside: | find({--here--},func... |  //
+        // Find inside the user model //\
         userModel.find({
             'email': req.session.user.email
         }, function(error, allProducts) {
-            // If lengthh of cart array of user module is zero   means cart is empty //
+            
             //if cart is not empty then render cartInfo view and pass cart info
             if (error) {
                 var errorResponse = responseGenerator.generate(true, 'Your Cart Is Empty', 204, null);
@@ -384,7 +380,6 @@ module.exports.controllerFunction = function(app) {
     // 'GET' method for getting all users //
     userRouter.get('/all', function(req, res) {
         // Find inside the users model //
-        // The condition for finding is written inside: | find({--here--},func... |  //
         userModel.find({}, function(error, allUsers) {
             // If error //
             if (error) {
@@ -429,7 +424,6 @@ module.exports.controllerFunction = function(app) {
     // 'GET' method used //
     userRouter.get('/forgot/screen', function(req, res) {
         // Display 'forgot.jade' //
-        // This is an jade template(requires html knowledge) created using jade templating engine //
         res.render('forgot');
     });
 
@@ -437,7 +431,6 @@ module.exports.controllerFunction = function(app) {
     // 'POST' method used for sending recovery information to the particular user //
     userRouter.post('/forgot', function(req, res) {
         // Find particular inside the users model //
-        // The condition for finding is written inside: | find({--here--},func... |  //
         userModel.findOne({
             'email': req.body.email
         }, function(error, foundUser) {
@@ -471,7 +464,6 @@ module.exports.controllerFunction = function(app) {
                 transporter.sendMail(mailOptions, function(error, info) {
                     // If error //
                     if (error)
-                        // Show error (For developers reference) //
                         console.log(error);
 
                     else
@@ -492,7 +484,6 @@ module.exports.controllerFunction = function(app) {
         var productsId = req.body.productId;
 
         // Find Particular inside the users model //
-        // The condition for finding is written inside: | find({--here--},func... |  //
         productsModel.findOne({
             'productId': productsId
         }, function(err, productFound) {
@@ -561,7 +552,6 @@ module.exports.controllerFunction = function(app) {
         // Strore the product id passed from the body in a variable //
         var productsId = req.body.productId;
         // Find Particular inside the products model //
-        // The condition for finding is written inside: | find({--here--},func... |  //
         productsModel.findOne({
             'productId': productsId
         }, function(err, productFound) {
@@ -575,8 +565,7 @@ module.exports.controllerFunction = function(app) {
                 };
 
                 // find in user's model
-                // The condition for finding is written inside: | find({--here--},func... |  //
-                userModel.findOne({
+                 userModel.findOne({
                     $and: [{
                         'email': req.session.user.email
                     }, {

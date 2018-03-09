@@ -33,7 +33,6 @@ app.use(session({
     } // Make true in case of SSL .
 }));
 
-app.use(flash());
 app.set('view engine', 'ejs'); // Intitializing jade templating engine //
 app.set('views', path.join(__dirname + '/app/views')); // Including the views directory dynamically //
 
