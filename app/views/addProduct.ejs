@@ -11,7 +11,7 @@
 
     .box
     {
-      padding: 5% !important;
+      padding: 1% !important;
       margin-left:20% !important;
       margin-right: 20% !important;
       margin-top: 0 !important;
@@ -44,19 +44,11 @@
       text-align : center;
     }
 
-    .signupButton
-    {
-      text-decoration: none;
-    }
-
-
-
   </style>
 </head>
 <body>
   <main>
   <div class="box">
-    <br>
     <p><b>Create a Product</b></p>
     <hr>
     <form class="login-form" action="http://localhost:2000/v1/products/create" method="post">
@@ -64,7 +56,7 @@
         <input class="input-box" autocomplete="off" type="text" name="productName" placeholder="Product Name" autofocus required/>
       </div>
       <div class="input-block">
-        <input class="input-box" autocomplete="off" type="text" name="productPrice" placeholder="Product Price" autofocus required/>
+        <input class="input-box" autocomplete="off" type="number" name="productPrice" placeholder="Product Price" autofocus required/>
       </div>
       <div class="input-block">
         <input class="input-box" autocomplete="off" type="text" name="productDescription" placeholder="Product Description" autofocus required/>
@@ -83,11 +75,9 @@
       </div>
       <div class="input-block">
         <input class="input-box" autocomplete="off" type="text" name="productCategory" placeholder="Mention Categories seperated by commas " autofocus required/>
-      </div> <br>
-      <button type="submit" name="submit">Create</button><br>
-      
-    </form>
-   
+      </div> 
+      <button type="submit" name="submit">Create</button><br>      
+    </form>   
   </div>
   </main>
   <% include ./footer.ejs %>

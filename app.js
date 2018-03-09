@@ -2,8 +2,8 @@
 var express = require('express');
 
 
-  // Including javascript file //
-  require('./server.js');
+ // Including javascript file //
+ require('./server.js');
 
 
 
